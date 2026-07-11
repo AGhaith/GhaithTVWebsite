@@ -243,7 +243,7 @@ function App() {
                   </a>
                 </div>
                 <div className="btn-wrapper">
-                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Windows-V1/Ghaith.TV.Setup.1.0.exe" className="btn btn-secondary glass">
+                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Windows-V1.1/Ghaith.TV.Setup.1.1.0.exe" className="btn btn-secondary glass">
                     <MonitorPlay size={20} /> {t.btnWindows}
                   </a>
                 </div>
