@@ -238,7 +238,7 @@ function App() {
               
               <div className="download-options">
                 <div className="btn-wrapper">
-                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Android-V1/GhaithTV.apk" className="btn btn-primary glass">
+                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Android-V1.1/GhaithTV.apk" className="btn btn-primary glass">
                     <Download size={20} /> {t.btnAndroid}
                   </a>
                 </div>
