@@ -20,7 +20,11 @@
   letter-spacing: -0.02em;
 }
 
-[dir="rtl"] .elegant-font, [dir="rtl"] .hero-font {
+.space-font {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+[dir="rtl"] .elegant-font, [dir="rtl"] .hero-font, [dir="rtl"] .space-font {
   font-family: 'Cairo', 'Playfair Display', sans-serif;
 }
 
@@ -93,14 +97,19 @@
   right: 30%;
 }
 
-/* --- Content --- */
+/* --- Shared Layout --- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
 .navbar {
   padding: clamp(1.5rem, 3vh, 2rem) 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  /* Force Navbar to stay LTR so logo and button don't swap places */
   direction: ltr;
 }
 
@@ -126,35 +135,100 @@
   font-weight: 600;
   transition: background 0.3s, transform 0.3s;
   cursor: pointer;
-  direction: ltr; /* Ensure the button text direction doesn't get messed up */
+  direction: ltr;
 }
 .lang-toggle:hover {
   background: rgba(255,255,255,0.15);
   transform: translateY(-2px);
 }
 
+/* --- Hero Section 2-Column Layout --- */
 .hero-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center; 
-  text-align: center;
-  padding: 0 5% 5vh 5%;
   min-height: calc(100vh - 100px);
+  padding-bottom: 5vh;
 }
 
 .hero-content {
-  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
   width: 100%;
+  text-align: start; /* Supports RTL perfectly */
   z-index: 2;
 }
 
+.hero-text-col {
+  flex: 1;
+  max-width: 800px;
+}
+
+.hero-panel-col {
+  flex: 0 0 350px; /* Fixed width for the right panel */
+}
+
+/* --- Hero Glass Panel --- */
+.hero-glass-panel {
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(229, 9, 20, 0.3); /* Neon top glow */
+  border-bottom: 1px solid rgba(76, 29, 149, 0.3); /* Neon bottom glow */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.panel-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.panel-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(76, 29, 149, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.15);
+}
+
+.panel-icon {
+  color: #ffffff;
+}
+
+.panel-item-text h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem 0;
+  color: #ffffff;
+}
+
+.panel-item-text p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- Hero Typography & Buttons --- */
 .hero-title-container {
   margin-bottom: clamp(1rem, 2vh, 1.5rem);
 }
 
 .hero-title-line {
-  font-size: clamp(3rem, 10vw, 7rem);
+  font-size: clamp(3rem, 7vw, 6.5rem); /* Slightly scaled down to fit 2 cols */
   font-weight: 800;
   line-height: 1.05;
   margin: 0;
@@ -162,37 +236,104 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: var(--text-muted);
   max-width: 600px;
-  margin: 0 auto clamp(1.5rem, 3vh, 2.5rem);
+  margin: 0 0 clamp(1.5rem, 3vh, 2.5rem) 0;
   line-height: 1.6;
 }
 
 .download-options {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(0.5rem, 2vw, 1rem);
+  justify-content: flex-start;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 .btn-wrapper {
   border-radius: 30px;
-  width: 100%;
-  max-width: 250px;
-}
-
-@media (min-width: 768px) {
-  .btn-wrapper {
-    width: auto;
-    max-width: none;
-  }
+  width: auto; /* Let buttons wrap naturally on desktop */
 }
 
 .btn {
-  width: 100%;
-  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.8rem;
+  font-size: 1rem;
   font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+
+.btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+}
+
+/* --- Responsive Hero --- */
+@media (max-width: 1100px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+    padding-top: 2rem;
+  }
+  
+  .hero-subtitle {
+    margin: 0 auto clamp(1.5rem, 3vh, 2.5rem);
+  }
+
+  .download-options {
+    justify-content: center;
+  }
+
+  .hero-panel-col {
+    width: 100%;
+    max-width: 500px;
+    flex: auto;
+  }
+
+  .hero-glass-panel {
+    text-align: start; /* Keep panel text LTR/RTL native */
+  }
+  
+  .btn-wrapper {
+    width: 100%;
+    max-width: 300px;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* --- Vertical Features Container --- */
@@ -226,24 +367,10 @@
   user-select: none;
 }
 
-.vertical-feature-panel .hollow-number {
-  left: -5%;
-}
-
-.vertical-feature-panel.reversed .hollow-number {
-  left: auto;
-  right: -5%;
-}
-
-[dir="rtl"] .vertical-feature-panel .hollow-number {
-  left: auto;
-  right: -5%;
-}
-
-[dir="rtl"] .vertical-feature-panel.reversed .hollow-number {
-  right: auto;
-  left: -5%;
-}
+.vertical-feature-panel .hollow-number { left: -5%; }
+.vertical-feature-panel.reversed .hollow-number { left: auto; right: -5%; }
+[dir="rtl"] .vertical-feature-panel .hollow-number { left: auto; right: -5%; }
+[dir="rtl"] .vertical-feature-panel.reversed .hollow-number { right: auto; left: -5%; }
 
 .panel-content.container {
   display: flex;
@@ -251,9 +378,6 @@
   justify-content: space-between;
   gap: clamp(2rem, 5vw, 6rem);
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 5%;
   position: relative;
   z-index: 2;
 }

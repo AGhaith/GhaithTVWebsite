@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Play, Download, MonitorPlay, Globe } from 'lucide-react';
+import { Play, Download, MonitorPlay, Globe, Tv, Zap, Server, Film } from 'lucide-react';
 import CustomCursor from './components/CustomCursor';
 import { translations } from './i18n';
 import './App.css';
@@ -15,12 +15,10 @@ const SplitText = ({ text, className, lang }) => {
       {text.split(' ').map((word, wordIdx) => (
         <span key={wordIdx} className="word" style={{ display: 'inline-block', verticalAlign: 'bottom', marginInlineEnd: '0.3em', willChange: 'transform, opacity, filter' }}>
           {lang === 'ar' ? (
-            // In Arabic, wrapping individual letters breaks cursive connections. We must keep words whole!
             <span className="char" style={{ display: 'inline-block', willChange: 'transform, opacity' }}>
               {word}
             </span>
           ) : (
-            // For English, we can safely split characters for complex 3D animations
             word.split('').map((char, charIdx) => (
               <span key={charIdx} className="char" style={{ display: 'inline-block', willChange: 'transform, opacity' }}>
                 {char}
@@ -31,6 +29,11 @@ const SplitText = ({ text, className, lang }) => {
       ))}
     </span>
   );
+};
+
+// Map string icon names to Lucide components
+const IconMap = {
+  Tv, Zap, Server, Film
 };
 
 function App() {
@@ -44,7 +47,6 @@ function App() {
   }, [lang]);
 
   useEffect(() => {
-    // Lenis Setup
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -63,7 +65,6 @@ function App() {
     gsap.ticker.lagSmoothing(0, 0);
 
     const ctx = gsap.context(() => {
-
       // --- Background Action Setup ---
       const blobs = gsap.utils.toArray('.blob');
       blobs.forEach((blob) => {
@@ -87,7 +88,7 @@ function App() {
         gsap.to('.blob-1', { x: x * 3, y: y * 3, duration: 3, ease: "power2.out", overwrite: "auto" });
       });
 
-      // --- Main Animations ---
+      // --- Hero Animations ---
       gsap.from('.hero-title-line .word', {
         y: 40,
         opacity: 0,
@@ -113,6 +114,24 @@ function App() {
         duration: 1,
         stagger: 0.1,
         delay: 1,
+        ease: 'power3.out'
+      });
+
+      // Glass Panel Reveal
+      gsap.from('.hero-glass-panel', {
+        opacity: 0,
+        x: 50,
+        duration: 1.5,
+        delay: 1.2,
+        ease: 'power3.out'
+      });
+      
+      gsap.from('.panel-item', {
+        opacity: 0,
+        x: 20,
+        duration: 1,
+        stagger: 0.15,
+        delay: 1.4,
         ease: 'power3.out'
       });
 
@@ -199,38 +218,63 @@ function App() {
           </button>
         </nav>
 
-        <section className="hero-section">
+        <section className="hero-section container">
           <div className="hero-content">
-            <div className="hero-title-container">
-              <h1 className="hero-title-line hero-font">
-                <SplitText text={t.heroTitle1} lang={lang} />
-              </h1>
-              <h1 className="hero-title-line hero-font">
-                <SplitText text={t.heroTitle2} lang={lang} />
-              </h1>
-            </div>
             
-            <p className="hero-subtitle">
-              {t.heroSubtitle}
-            </p>
-            
-            <div className="download-options">
-              <div className="btn-wrapper">
-                <a href="#android" className="btn btn-primary glass">
-                  <Download size={20} /> {t.btnAndroid}
-                </a>
+            {/* Left Column: Main Call to Action */}
+            <div className="hero-text-col">
+              <div className="hero-title-container">
+                <h1 className="hero-title-line hero-font">
+                  <SplitText text={t.heroTitle1} lang={lang} />
+                </h1>
+                <h1 className="hero-title-line hero-font">
+                  <SplitText text={t.heroTitle2} lang={lang} />
+                </h1>
               </div>
-              <div className="btn-wrapper">
-                <a href="#pc" className="btn btn-secondary glass">
-                  <MonitorPlay size={20} /> {t.btnWindows}
-                </a>
-              </div>
-              <div className="btn-wrapper">
-                <a href="#web" className="btn btn-secondary glass">
-                  <Play size={20} /> {t.btnWeb}
-                </a>
+              
+              <p className="hero-subtitle">
+                {t.heroSubtitle}
+              </p>
+              
+              <div className="download-options">
+                <div className="btn-wrapper">
+                  <a href="https://www.mediafire.com/file/frdekrc6hyievr6/GhaithTV.apk/file" target="_blank" rel="noopener noreferrer" className="btn btn-primary glass">
+                    <Download size={20} /> {t.btnAndroid}
+                  </a>
+                </div>
+                <div className="btn-wrapper">
+                  <a href="#pc" className="btn btn-secondary glass">
+                    <MonitorPlay size={20} /> {t.btnWindows}
+                  </a>
+                </div>
+                <div className="btn-wrapper">
+                  <a href="#web" className="btn btn-secondary glass">
+                    <Play size={20} /> {t.btnWeb}
+                  </a>
+                </div>
               </div>
             </div>
+
+            {/* Right Column: Glassmorphism Feature Panel */}
+            <div className="hero-panel-col">
+              <div className="hero-glass-panel">
+                {t.heroPanel.map((item, idx) => {
+                  const IconComp = IconMap[item.icon];
+                  return (
+                    <div key={idx} className="panel-item">
+                      <div className="panel-icon-wrapper">
+                        <IconComp size={24} className="panel-icon" />
+                      </div>
+                      <div className="panel-item-text">
+                        <h4 className="space-font">{item.title}</h4>
+                        <p>{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -248,7 +292,7 @@ function App() {
                     <p className="feature-desc">{feature.desc}</p>
                   </div>
                   <div className="panel-image">
-                    <img src="/abstract_tech.png" alt="Abstract Feature Visualization" />
+                    <img src={`/feature_${idx + 1}.png`} alt={`${feature.title} Visualization`} />
                     <div className="image-overlay"></div>
                   </div>
                 </div>
