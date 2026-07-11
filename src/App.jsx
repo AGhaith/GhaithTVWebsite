@@ -243,15 +243,11 @@ function App() {
                   </a>
                 </div>
                 <div className="btn-wrapper">
-                  <a href="#pc" className="btn btn-secondary glass">
+                  <a href="https://www.mediafire.com/file/42mgc5echkwy487/Ghaith+TV+Setup+0.0.0.exe/file" target="_blank" rel="noopener noreferrer" className="btn btn-secondary glass">
                     <MonitorPlay size={20} /> {t.btnWindows}
                   </a>
                 </div>
-                <div className="btn-wrapper">
-                  <a href="#web" className="btn btn-secondary glass">
-                    <Play size={20} /> {t.btnWeb}
-                  </a>
-                </div>
+
               </div>
             </div>
 
