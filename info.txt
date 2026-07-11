@@ -1,0 +1,42 @@
+GhaithTV — Premium Cross-Platform IPTV Player
+===============================================
+
+Overview
+--------
+GhaithTV is a highly advanced, premium IPTV application built with modern web technologies. It provides a stunning, Netflix-inspired user experience for streaming Live TV, Movies (VOD), and TV Series. 
+
+Supported Platforms
+-------------------
+GhaithTV is a true write-once, run-anywhere application, natively supporting:
+1. Android (via Capacitor) - Fully responsive mobile layouts.
+2. PC / Windows Desktop (via Electron) - Includes a custom, borderless title bar with cinematic minimize/maximize/close animations.
+3. Web Browsers (via standard Web build) - Accessible directly via URL without installation.
+
+Key Features & Capabilities
+---------------------------
+• Universal Playlist Support
+  - Full support for M3U and M3U8 playlists.
+  - Full integration with Xtream Codes API (supports Live TV, VOD, and Series).
+  - Ability to add, manage, and switch between multiple playlists instantly.
+
+• Advanced Media Player
+  - Custom, hardware-accelerated video player built from scratch.
+  - Native support for HLS (.m3u8) streams via hls.js.
+  - Native support for MPEG-TS (.ts) streams via mpegts.js.
+  - Volume, fullscreen, and timeline controls.
+
+• Premium User Interface
+  - A beautiful, dark-themed UI heavily inspired by modern streaming platforms like Netflix.
+  - Smooth micro-animations, glassmorphism effects, and cinematic window transitions.
+  - Dynamic "Spotlight" slideshow header to showcase and cycle through featured or favorited channels.
+  - A dedicated screen for picking between Live TV, Movies, and Series categories.
+
+• Content Organization
+  - Instantly search through thousands of channels with zero lag.
+  - Channels are automatically grouped by category.
+  - Dedicated "Favorites" system. Users can favorite channels and access them from a specialized Spotlight tab.
+
+• Performance & Storage
+  - Playlists and favorites are stored securely and persistently on the device using IndexedDB.
+  - Built-in pagination and virtualization to render massive channel lists without slowing down the device.
+  - Completely responsive design that flawlessly adapts to mobile portrait, mobile landscape, and ultra-wide desktop monitors.
