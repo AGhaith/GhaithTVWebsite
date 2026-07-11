@@ -238,12 +238,12 @@ function App() {
               
               <div className="download-options">
                 <div className="btn-wrapper">
-                  <a href="https://www.mediafire.com/file/frdekrc6hyievr6/GhaithTV.apk/file" target="_blank" rel="noopener noreferrer" className="btn btn-primary glass">
+                  <a href="https://www.mediafire.com/file/frdekrc6hyievr6/GhaithTV_Android.apk/file" target="_blank" rel="noopener noreferrer" className="btn btn-primary glass">
                     <Download size={20} /> {t.btnAndroid}
                   </a>
                 </div>
                 <div className="btn-wrapper">
-                  <a href="https://www.mediafire.com/file/42mgc5echkwy487/Ghaith+TV+Setup+0.0.0.exe/file" target="_blank" rel="noopener noreferrer" className="btn btn-secondary glass">
+                  <a href="https://www.mediafire.com/file/42mgc5echkwy487/Ghaith_TV_Setup_For_Windows.exe/file" target="_blank" rel="noopener noreferrer" className="btn btn-secondary glass">
                     <MonitorPlay size={20} /> {t.btnWindows}
                   </a>
                 </div>
