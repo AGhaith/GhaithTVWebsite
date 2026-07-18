@@ -32,3 +32,6 @@ out/
 *.njsproj
 *.sln
 *.sw?
+
+# Local downloads backup
+public/assets/downloads/
