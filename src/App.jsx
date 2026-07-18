@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Play, Download, MonitorPlay, Globe, Tv, Zap, Server, Film } from 'lucide-react';
+import { Download, MonitorPlay, Globe, Tv, Zap, Server, Film } from 'lucide-react';
 import CustomCursor from './components/CustomCursor';
+import BackgroundCanvas from './components/BackgroundCanvas';
 import { translations } from './i18n';
 import './App.css';
 
@@ -65,28 +66,6 @@ function App() {
     gsap.ticker.lagSmoothing(0, 0);
 
     const ctx = gsap.context(() => {
-      // --- Background Action Setup ---
-      const blobs = gsap.utils.toArray('.blob');
-      blobs.forEach((blob) => {
-        gsap.to(blob, {
-          x: () => gsap.utils.random(-300, 300),
-          y: () => gsap.utils.random(-300, 300),
-          scale: () => gsap.utils.random(0.8, 1.4),
-          duration: () => gsap.utils.random(6, 12),
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-          delay: () => gsap.utils.random(0, -5)
-        });
-      });
-
-      const bgGrid = document.querySelector('.bg-grid');
-      window.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 50;
-        const y = (e.clientY / window.innerHeight - 0.5) * 50;
-        gsap.to(bgGrid, { x, y, duration: 2, ease: "power2.out" });
-        gsap.to('.blob-1', { x: x * 3, y: y * 3, duration: 3, ease: "power2.out", overwrite: "auto" });
-      });
 
       // --- Hero Animations ---
       gsap.from('.hero-title-line .word', {
@@ -202,13 +181,7 @@ function App() {
     <>
       <CustomCursor />
       
-      <div className="bg-container">
-        <div className="bg-grid"></div>
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
-        <div className="blob blob-3"></div>
-        <div className="blob blob-4"></div>
-      </div>
+      <BackgroundCanvas />
 
       <div ref={containerRef} className="app-wrapper">
         <nav className="navbar">
@@ -238,12 +211,12 @@ function App() {
               
               <div className="download-options">
                 <div className="btn-wrapper">
-                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Android-V1.1.1/GhaithTV.apk" className="btn btn-primary glass">
+                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Android-V1.1.2/GhaithTV.apk" className="btn btn-primary glass">
                     <Download size={20} /> {t.btnAndroid}
                   </a>
                 </div>
                 <div className="btn-wrapper">
-                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Windows-V1.1.1/Ghaith.TV.Setup.1.1.1.exe" className="btn btn-secondary glass">
+                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Windows-V1.1.2/Ghaith.TV.Setup.1.1.2.exe" className="btn btn-secondary glass">
                     <MonitorPlay size={20} /> {t.btnWindows}
                   </a>
                 </div>
