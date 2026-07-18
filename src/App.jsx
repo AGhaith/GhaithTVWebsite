@@ -211,12 +211,12 @@ function App() {
               
               <div className="download-options">
                 <div className="btn-wrapper">
-                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Android-V1.1.5/GhaithTV.apk" className="btn btn-primary glass">
+                  <a href="/assets/downloads/GhaithTV.1.1.6.apk" download className="btn btn-primary glass">
                     <Download size={20} /> {t.btnAndroid}
                   </a>
                 </div>
                 <div className="btn-wrapper">
-                  <a href="https://github.com/AGhaith/GhaithTVWebsite/releases/download/GhaithTV-Windows-V1.1.5/Ghaith.TV.Setup.1.1.5.exe" className="btn btn-secondary glass">
+                  <a href="/assets/downloads/Ghaith.TV.Setup.1.1.6.exe" download className="btn btn-secondary glass">
                     <MonitorPlay size={20} /> {t.btnWindows}
                   </a>
                 </div>
