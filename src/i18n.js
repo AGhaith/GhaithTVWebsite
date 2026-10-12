@@ -94,7 +94,7 @@ export const translations = {
         },
         {
           id: "performance",
-          title: "2 MB on Windows.",
+          title: "4 MB on Windows.",
           desc: "A lean desktop client that launches in a fraction of a second and leaves memory free for your computer.",
           caption: "Light on your PC",
         },
@@ -129,7 +129,7 @@ export const translations = {
       windows: {
         title: "Windows",
         desc: "Instant startup and featherweight memory footprint for your PC.",
-        cta: "Download Setup (2 MB)",
+        cta: "Download Setup (4 MB)",
         url: "/downloads/GhaithTV-Windows-Setup.exe",
         secondary: "64-bit installer (.exe) ›",
         secondaryUrl: "/downloads/GhaithTV-Windows-Setup.exe",
@@ -265,7 +265,7 @@ export const translations = {
         },
         {
           id: "performance",
-          title: "2 ميجابايت فقط على ويندوز.",
+          title: "4 ميجابايت فقط على ويندوز.",
           desc: "برنامج كمبيوتر فائق الخفة يفتح في لحظة ويستهلك حداً أدنى من ذاكرة جهازك.",
           caption: "خفيف على جهازك",
         },
@@ -300,7 +300,7 @@ export const translations = {
       windows: {
         title: "ويندوز",
         desc: "تشغيل فوري واستهلاك خفيف لموارد أجهزة الكمبيوتر.",
-        cta: "تحميل المثبت (2 ميجابايت)",
+        cta: "تحميل المثبت (4 ميجابايت)",
         url: "/downloads/GhaithTV-Windows-Setup.exe",
         secondary: "مثبت مباشر 64-بت (.exe) ›",
         secondaryUrl: "/downloads/GhaithTV-Windows-Setup.exe",

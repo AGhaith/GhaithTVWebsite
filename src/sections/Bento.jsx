@@ -28,7 +28,7 @@ export default function Bento({ t, lang }) {
             </div>
           </div>
 
-          {/* Tile 2: Windows 2 MB footprint */}
+          {/* Tile 2: Windows 4 MB footprint */}
           <div className="bento-tile bento-tile-performance">
             <div className="bento-tile-text">
               <span className="bento-caption">{bento.tiles[1].caption}</span>
