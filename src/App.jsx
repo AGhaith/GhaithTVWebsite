@@ -5,8 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { translations } from './i18n';
 import Nav from './sections/Nav';
 import Hero from './sections/Hero';
-import PinnedStory from './sections/PinnedStory';
-import PlayerGestures from './sections/PlayerGestures';
+import StickyScene from './sections/StickyScene';
+import Player from './sections/Player';
+import Bento from './sections/Bento';
 import Downloads from './sections/Downloads';
 import Faq from './sections/Faq';
 import Footer from './sections/Footer';
@@ -21,16 +22,17 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
+    ScrollTrigger.refresh();
   }, [lang]);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    // Single RAF loop tied directly to gsap.ticker, avoiding Lenis double-stepping
+    // Smooth momentum scroll via Lenis tied directly to GSAP ticker
     const lenis = new Lenis({
       duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (val) => Math.min(1, 1.001 - Math.pow(2, -10 * val)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
@@ -58,8 +60,9 @@ export default function App() {
       <Nav lang={lang} setLang={setLang} t={t} />
       <main id="main-content">
         <Hero t={t} lang={lang} />
-        <PinnedStory t={t} lang={lang} />
-        <PlayerGestures t={t} lang={lang} />
+        <StickyScene t={t} lang={lang} />
+        <Player t={t} lang={lang} />
+        <Bento t={t} lang={lang} />
         <Downloads t={t} />
         <Faq t={t} />
       </main>

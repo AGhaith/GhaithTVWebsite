@@ -1,29 +1,52 @@
 import React from 'react';
-import { Globe } from 'lucide-react';
 
 export default function Footer({ t, lang, setLang }) {
+  const scrollTo = (id) => (e) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="site-footer">
+    <footer className="apple-footer">
       <div className="footer-container">
-        <div className="footer-brand-row">
-          <a href="#" className="site-logo" aria-label="GhaithTV Home">
-            <span className="logo-accent">{t.brand}</span>
-            <span className="logo-suffix">{t.brandSubtitle}</span>
-          </a>
-          <p className="footer-tagline">{t.footer.tagline}</p>
+        {/* Footnote / Disclaimer */}
+        <div className="footer-footnote">
+          <p>{t.footer.note}</p>
         </div>
 
-        <div className="footer-bottom-row">
-          <p className="footer-copyright">{t.footer.copyright}</p>
+        <div className="footer-hairline" />
+
+        {/* Directory links */}
+        <div className="footer-links-row">
+          <nav className="footer-links-list" aria-label="Footer Navigation">
+            {t.footer.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={scrollTo(link.href.replace('#', ''))}
+                className="footer-link"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
           <button
             type="button"
-            className="lang-switcher footer-lang-btn"
+            className="footer-lang-btn"
             onClick={() => setLang((prev) => (prev === 'en' ? 'ar' : 'en'))}
             aria-label={`Switch language to ${t.nav.langToggle}`}
           >
-            <Globe size={15} aria-hidden="true" />
-            <span>{t.nav.langToggle}</span>
+            {t.nav.langToggle}
           </button>
+        </div>
+
+        {/* Legal bottom row */}
+        <div className="footer-legal-row">
+          <p className="footer-copyright">{t.footer.copyright}</p>
         </div>
       </div>
     </footer>
