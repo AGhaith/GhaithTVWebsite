@@ -1,104 +1,304 @@
 export const translations = {
   en: {
-    logo: "GhaithTV",
-    heroTitle1: "The Ultimate",
-    heroTitle2: "Streaming Experience",
-    heroSubtitle: "GhaithTV is a beautiful, easy-to-use IPTV application. Enjoy your favorite live TV, movies, and shows across all your devices in stunning quality.",
-    btnAndroid: "Download for Android",
-    btnWindows: "Download for Windows",
-    btnWeb: "Open Web App",
-    heroPanel: [
-      { icon: "Tv", title: "Crystal 4K", desc: "Ultra HD Quality" },
-      { icon: "Zap", title: "Zero Latency", desc: "Truly Live Sports" },
-      { icon: "Server", title: "99.9% Uptime", desc: "Unmatched Reliability" },
-      { icon: "Film", title: "Massive Library", desc: "Football, Movies & TV Series" }
-    ],
-    featuresTitle: "Uncompromised Performance",
-    featuresSubtitle: "Built for everyone. Available everywhere.",
-    features: [
-      {
-        num: "01",
-        title: "Endless Entertainment",
-        desc: "Gain access to a truly massive library featuring thousands of live channels, blockbuster movies, and binge-worthy TV series."
+    brand: "GHAITH",
+    brandSubtitle: "TV",
+    nav: {
+      features: "Features",
+      gestures: "Player",
+      downloads: "Downloads",
+      faq: "FAQ",
+      downloadBtn: "Download",
+      langToggle: "العربية",
+    },
+    hero: {
+      badge: "NEW APP RELEASE",
+      headline: "Your entire subscription in one fast app.",
+      subhead: "Live channels, movies, and series ready to watch. Instant search, clean categories, and controls that respond to your fingers.",
+      ctaAndroid: "Download for Android",
+      ctaAndroidMeta: "ARM64 · 30 MB",
+      ctaWindows: "Download for Windows",
+      ctaWindowsMeta: "64-bit · 2 MB",
+      screens: {
+        series: "GhaithTV home screen with category browsing",
+        detail: "GhaithTV title details and episode resume screen",
       },
-      {
-        num: "02",
-        title: "Truly Live Broadcasts",
-        desc: "Experience sports and breaking news exactly as they happen. Our ultra-low latency technology ensures you are watching truly live broadcasts with zero delay."
+    },
+    story: {
+      heading: "Everything organized the way it should be.",
+      steps: [
+        {
+          id: "browse",
+          variant: "home",
+          tag: "CATALOG",
+          title: "Switch between Live TV, Movies, and Series.",
+          desc: "Your full subscription loads once when you sign in. Jump between live sports, films, and shows without waiting for playlists to reload.",
+        },
+        {
+          id: "detail",
+          variant: "detail",
+          tag: "SERIES & MOVIES",
+          title: "Pick up right where you left off.",
+          desc: "See plots, ratings, and episodes at a glance. When you return to a series, one tap resumes the exact episode you were watching.",
+        },
+        {
+          id: "search",
+          variant: "search",
+          tag: "INSTANT SEARCH",
+          title: "Find any title in seconds.",
+          desc: "Type a couple of letters to search your entire catalog. Results show up right away, separated neatly by channels, movies, and series.",
+        },
+        {
+          id: "live",
+          variant: "live",
+          tag: "LIVE BROADCASTS",
+          title: "Live TV sorted by country and category.",
+          desc: "Find sports matches, news, and entertainment quickly with clear channel logos and instant broadcast startup.",
+        },
+      ],
+    },
+    player: {
+      heading: "A video player built for your fingers.",
+      subhead: "Adjust volume, change brightness, and skip forward with simple gestures on the screen.",
+      movieTitle: "Night Shift",
+      movieMeta: "1080p · 2024",
+      moviePill: "SERIES",
+      currentTime: "00:24:18",
+      totalTime: "00:42:00",
+      aspectRatio: "16:9 Fit",
+      gestures: [
+        {
+          id: "seek",
+          title: "Double-Tap Stacking Seek",
+          desc: "Tap the right or left edge to skip 10 seconds. Keep tapping to stack +20s and +30s to jump through scenes without opening menus.",
+          badge: "+10s / +20s / +30s",
+        },
+        {
+          id: "speed",
+          title: "Hold for 2x Speed",
+          desc: "Press and hold anywhere on screen to temporarily watch at 2x speed. Lift your finger to return to normal speed.",
+          badge: "2x Boost",
+        },
+        {
+          id: "swipe",
+          title: "Vertical Swipe Controls",
+          desc: "Slide your finger up or down on the left side to adjust screen brightness, and on the right side for volume.",
+          badge: "Brightness & Volume",
+        },
+        {
+          id: "lock",
+          title: "Pinch to Fill & Control Lock",
+          desc: "Pinch outwards to fill your phone screen, and lock controls with one tap so accidental touches never interrupt your viewing.",
+          badge: "Lock & Aspect",
+        },
+      ],
+    },
+    downloads: {
+      heading: "Download GhaithTV for your device.",
+      subhead: "Direct downloads with fast installation. Get set up in under a minute.",
+      android: {
+        title: "Android Phone",
+        platformNote: "Android 7.0 or newer",
+        tag: "MOBILE APP",
+        description: "Watch live channels, movies, and series smoothly on your phone, with a player that responds to every tap.",
+        primaryBtn: "Download APK (ARM64)",
+        primaryMeta: "30 MB · Recommended for most phones",
+        primaryUrl: "/downloads/GhaithTV-Android-arm64.apk",
+        secondaryBtn: "Version for older phones",
+        secondaryMeta: "27 MB · ARMv7 32-bit build",
+        secondaryUrl: "/downloads/GhaithTV-Android-armv7.apk",
+        installTip: "How to install: Tap download, open the APK file from your downloads, and allow installs from this source if prompted.",
       },
-      {
-        num: "03",
-        title: "Crystal Clear 4K",
-        desc: "Experience every single detail in stunning 4K and HDR. We deliver pristine, cinema-grade video quality straight to your screen."
+      windows: {
+        title: "Windows Desktop",
+        platformNote: "Windows 10 / 11 (64-bit)",
+        tag: "PC APPLICATION",
+        description: "Lightweight desktop app that launches instantly and uses minimal memory on your computer.",
+        primaryBtn: "Download Windows Setup",
+        primaryMeta: "2 MB installer · 64-bit",
+        primaryUrl: "/downloads/GhaithTV-Windows-Setup.exe",
+        features: [
+          "Tiny 2 MB installer",
+          "Starts instantly with low RAM consumption",
+          "Login details saved securely in Windows Credential Manager",
+        ],
       },
-      {
-        num: "04",
-        title: "Silky Smooth Playback",
-        desc: "Enjoy live sports and action movies in perfect, stutter-free high definition. It simply works without any annoying buffering."
-      },
-      {
-        num: "05",
-        title: "Lightning Fast Search",
-        desc: "Find your favorite channels, movies, and shows instantly without any waiting. Your massive playlists load the moment you open the app."
-      },
-      {
-        num: "06",
-        title: "Play Anywhere",
-        desc: "Whether you're on your phone, your desktop, or your smart TV, enjoy one seamless and beautiful experience."
-      }
-    ],
-    footerText: "© 2026 GhaithTV. All Rights Reserved.",
-    langToggle: "العربية"
+      securityNote: "Your subscription credentials are saved inside your device's secure vault (Android Keystore or Windows Credential Manager). Never stored in plain text files.",
+    },
+    faq: {
+      heading: "Frequently Asked Questions",
+      items: [
+        {
+          q: "Do I need a GhaithTV subscription to use the app?",
+          a: "Yes. GhaithTV is the player application for your subscription. Log in with your username and password to start watching your full library of channels, movies, and series.",
+        },
+        {
+          q: "How is my password stored?",
+          a: "Your password is encrypted inside your operating system's secure vault: Android Keystore on phones and Windows Credential Manager on PC. It is never stored in readable text files.",
+        },
+        {
+          q: "Which Android file should I download?",
+          a: "Pick the ARM64 file for almost all modern Android phones. Download the ARMv7 file only if you are using an older phone (released before 2017).",
+        },
+        {
+          q: "Does GhaithTV work on TV boxes?",
+          a: "You can install the Android APK on Android TV boxes and streams play smoothly. Remote control navigation is still being refined for television remotes.",
+        },
+      ],
+    },
+    footer: {
+      copyright: "© 2026 GhaithTV. All rights reserved.",
+      tagline: "Fast streaming player for your GhaithTV subscription on Android and Windows.",
+    },
   },
   ar: {
-    logo: "GhaithTV",
-    heroTitle1: "تجربة البث",
-    heroTitle2: "النهائية والفريدة",
-    heroSubtitle: "غيث تي في هو تطبيق IPTV جميل وسهل الاستخدام. استمتع بالبث المباشر والأفلام والبرامج على جميع أجهزتك بجودة مذهلة.",
-    btnAndroid: "تحميل للأندرويد",
-    btnWindows: "تحميل للويندوز",
-    btnWeb: "افتح تطبيق الويب",
-    heroPanel: [
-      { icon: "Tv", title: "جودة 4K نقية", desc: "وضوح فائق الدقة" },
-      { icon: "Zap", title: "بدون تأخير", desc: "رياضة حية وحقيقية" },
-      { icon: "Server", title: "استقرار 99.9%", desc: "موثوقية لا تضاهى" },
-      { icon: "Film", title: "مكتبة ضخمة", desc: "كرة قدم، أفلام ومسلسلات" }
-    ],
-    featuresTitle: "أداء لا يضاهى",
-    featuresSubtitle: "مصمم للجميع. متوفر في كل مكان.",
-    features: [
-      {
-        num: "٠١",
-        title: "ترفيه لا نهاية له",
-        desc: "احصل على وصول إلى مكتبة ضخمة حقاً تضم آلاف القنوات الحية، والأفلام الرائجة، والمسلسلات التي تستحق المشاهدة."
+    brand: "غيث",
+    brandSubtitle: "TV",
+    nav: {
+      features: "المميزات",
+      gestures: "المشغل",
+      downloads: "التحميل",
+      faq: "الأسئلة الشائعة",
+      downloadBtn: "تحميل التطبيق",
+      langToggle: "English",
+    },
+    hero: {
+      badge: "الإصدار الجديد",
+      headline: "كل قنواتك وأفلامك في تطبيق واحد سريع.",
+      subhead: "قنوات حية وأفلام ومسلسلات جاهزة للمشاهدة فوراً، مع بحث لحظي وتحكم مباشر باللمس.",
+      ctaAndroid: "تحميل للأندرويد",
+      ctaAndroidMeta: "30 ميجابايت · ARM64",
+      ctaWindows: "تحميل للويندوز",
+      ctaWindowsMeta: "2 ميجابايت · 64-بت",
+      screens: {
+        series: "واجهة تصفح الأقسام والمسلسلات في تطبيق غيث تي في",
+        detail: "واجهة تفاصيل العمل واستئناف الحلقات في تطبيق غيث تي في",
       },
-      {
-        num: "٠٢",
-        title: "بث حي وحقيقي",
-        desc: "عش لحظات الرياضة والأخبار العاجلة فور حدوثها. تضمن لك تقنية الاستجابة السريعة لدينا مشاهدة بث حي وحقيقي بدون أي تأخير."
+    },
+    story: {
+      heading: "كل المحتوى مرتب بالطريقة اللي تريحك.",
+      steps: [
+        {
+          id: "browse",
+          variant: "home",
+          tag: "الرئيسية",
+          title: "تنقل سريع بين القنوات والأفلام والمسلسلات.",
+          desc: "اشتراكك بالكامل بيحمّل أول ما تسجل دخول. بدل بين البث المباشر والأفلام في لحظة ومن غير ما تستنى القوائم تحمل كل شوية.",
+        },
+        {
+          id: "detail",
+          variant: "detail",
+          tag: "المسلسلات والأفلام",
+          title: "كمّل مشاهدتك من نفس الدقيقة.",
+          desc: "تفاصيل القصة والتقييم وقائمة الحلقات واضحة قدامك. بضغطة واحدة ترجع تكمل المسلسل من آخر حلقة وقفت عندها.",
+        },
+        {
+          id: "search",
+          variant: "search",
+          tag: "البحث اللحظي",
+          title: "هتلاقي أي عمل في ثواني.",
+          desc: "اكتب أول حرفين من اسم الفيلم أو القناة وهتظهر لك النتيجة فوراً، متقسمة حسب القنوات والأفلام والمسلسلات.",
+        },
+        {
+          id: "live",
+          variant: "live",
+          tag: "البث المباشر",
+          title: "قنوات حية متقسمة بالبلد والفئة.",
+          desc: "تابع الماتشات والأخبار والقنوات الترفيهية بسهولة مع شعارات واضحة وتشغيل فوري للبث.",
+        },
+      ],
+    },
+    player: {
+      heading: "مشغل فيديو بيتفاعل مع لمستك.",
+      subhead: "علّي الصوت واضبط الإضاءة وقدم الفيديو بإيماءات سريعة على الشاشة.",
+      movieTitle: "نوبة ليلية",
+      movieMeta: "1080p · 2024",
+      moviePill: "مسلسل",
+      currentTime: "00:24:18",
+      totalTime: "00:42:00",
+      aspectRatio: "16:9 ملائم",
+      gestures: [
+        {
+          id: "seek",
+          title: "نقر مزدوج للتقديم والترجيع",
+          desc: "انقر مرتين يمين أو شمال للتقديم 10 ثوانٍ، واستمر في النقر للقفز 20 أو 30 ثانية لتخطي المشاهد الطويلة بسرعة.",
+          badge: "+10ث / +20ث / +30ث",
+        },
+        {
+          id: "speed",
+          title: "اضغط مطولاً لتسريع 2x",
+          desc: "اضغط مع الاستمرار في أي مكان على الشاشة لتسريع المشهد لضعف السرعة، وشيل صباعك عشان ترجع فوراً للسرعة العادية.",
+          badge: "تسريع 2x",
+        },
+        {
+          id: "swipe",
+          title: "سحب رأسي للصوت والإضاءة",
+          desc: "اسحب لفوق أو لتحت على الشمال لضبط الإضاءة، وعلى اليمين لرفع وخفض مستوى الصوت بكل سهولة.",
+          badge: "الإضاءة والصوت",
+        },
+        {
+          id: "lock",
+          title: "ملء الشاشة وقفل الأزرار",
+          desc: "باعد بصوابعك لملء الشاشة بالكامل، واقفل الأزرار بضغطة واحدة عشان تتفادى أي لمسة بالغلط وأنت بتتفرج.",
+          badge: "ملء الشاشة وقفل اللمس",
+        },
+      ],
+    },
+    downloads: {
+      heading: "حمّل غيث تي في على جهازك.",
+      subhead: "روابط تحميل مباشرة وسريعة. التثبيت في أقل من دقيقة.",
+      android: {
+        title: "هواتف أندرويد",
+        platformNote: "أندرويد 7.0 أو أحدث",
+        tag: "تطبيق الموبايل",
+        description: "مشاهدة سلسة على موبايلك للقنوات والأفلام والمسلسلات، مع مشغل يستجيب لكل لمسة.",
+        primaryBtn: "تحميل ملف APK (ARM64)",
+        primaryMeta: "30 ميجابايت · الخيار الموصى به لمعظم الهواتف",
+        primaryUrl: "/downloads/GhaithTV-Android-arm64.apk",
+        secondaryBtn: "نسخة الهواتف القديمة",
+        secondaryMeta: "27 ميجابايت · معالجات 32-بت ARMv7",
+        secondaryUrl: "/downloads/GhaithTV-Android-armv7.apk",
+        installTip: "طريقة التثبيت: اضغط تحميل وافتح ملف APK، ووافق على التثبيت من هذا المصدر إذا طلب المتصفح ذلك.",
       },
-      {
-        num: "٠٣",
-        title: "جودة 4K نقية",
-        desc: "عش كل التفاصيل بجودة 4K و HDR المذهلة. نقدم لك جودة فيديو سينمائية نقية تصل مباشرة إلى شاشتك."
+      windows: {
+        title: "أجهزة الكمبيوتر (ويندوز)",
+        platformNote: "ويندوز 10 أو 11 (64-بت)",
+        tag: "برنامج الكمبيوتر",
+        description: "برنامج خفيف جداً يفتح فوراً ولا يستهلك موارد جهازك أو يبطئ النظام.",
+        primaryBtn: "تحميل مثبت الويندوز",
+        primaryMeta: "ملف تثبيت بحجم 2 ميجابايت فقط",
+        primaryUrl: "/downloads/GhaithTV-Windows-Setup.exe",
+        features: [
+          "حجم تثبيت خفيف للغاية: 2 ميجابايت فقط",
+          "تشغيل سريع جداً مع استهلاك ضئيل للذاكرة (RAM)",
+          "حفظ بيانات الدخول بأمان داخل نظام ويندوز",
+        ],
       },
-      {
-        num: "٠٤",
-        title: "تشغيل سلس تماماً",
-        desc: "استمتع بالرياضات الحية وأفلام الحركة بجودة عالية مثالية وخالية من التقطيع والتحميل المزعج."
-      },
-      {
-        num: "٠٥",
-        title: "بحث فائق السرعة",
-        desc: "اعثر على قنواتك وأفلامك المفضلة في لمح البصر. قوائم التشغيل الضخمة الخاصة بك يتم تحميلها فور فتح التطبيق."
-      },
-      {
-        num: "٠٦",
-        title: "شاهد في أي مكان",
-        desc: "سواء كنت على هاتفك أو حاسوبك أو تلفازك الذكي، استمتع بتجربة واحدة سلسة وجميلة."
-      }
-    ],
-    footerText: "© 2026 غيث تي في. جميع الحقوق محفوظة.",
-    langToggle: "English"
-  }
+      securityNote: "بيانات اشتراكك مشفرة ومحفوظة داخل الخزينة الآمنة لنظام جهازك (Android Keystore أو Windows Credential Manager)، ولا تُسجل أبداً في ملفات مكشوفة.",
+    },
+    faq: {
+      heading: "الأسئلة الشائعة",
+      items: [
+        {
+          q: "هل أحتاج إلى اشتراك غيث تي في مسبق لاستخدام التطبيق؟",
+          a: "نعم، التطبيق مخصص لتشغيل اشتراكك. سجّل الدخول باسم المستخدم وكلمة السر وهتلاقي كل قنواتك وأفلامك ومسلسلاتك جاهزة.",
+        },
+        {
+          q: "كيف يتم حفظ وتأمين كلمة المرور الخاصة بي؟",
+          a: "كلمة السر بتتخزن مشفرة جوة نظام حماية جهازك (Android Keystore في الموبايل و Windows Credential Manager في الكمبيوتر)، ومش بتتسجل في أي ملف مكشوف.",
+        },
+        {
+          q: "أي ملف أندرويد يجب أن أختار؟",
+          a: "اختر نسخة ARM64 لأغلب الموبايلات الحديثة. لو جهازك قديم شوية (تم إصداره قبل 2017) اختر نسخة ARMv7.",
+        },
+        {
+          q: "هل يعمل التطبيق على أجهزة Android TV Box؟",
+          a: "تقدر تثبت ملف APK على أجهزة TV Box الأندرويد، والبث هيشتغل بسلاسة، مع العلم أن التحكم بالريموت كنترول جاري تحسينه عشان يبقى أسهل.",
+        },
+      ],
+    },
+    footer: {
+      copyright: "© 2026 غيث تي في. جميع الحقوق محفوظة.",
+      tagline: "مشغل سريع لاشتراك غيث تي في على أجهزة الأندرويد والكمبيوتر.",
+    },
+  },
 };
