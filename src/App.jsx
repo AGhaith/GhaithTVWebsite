@@ -9,7 +9,6 @@ import StickyScene from './sections/StickyScene';
 import Player from './sections/Player';
 import Bento from './sections/Bento';
 import Downloads from './sections/Downloads';
-import Faq from './sections/Faq';
 import Footer from './sections/Footer';
 import './App.css';
 
@@ -26,6 +25,25 @@ export default function App() {
   }, [lang]);
 
   useEffect(() => {
+    // Preload and decode screenshots ahead of scroll to prevent decoding hitching
+    const shots = [
+      '/shots/home.webp',
+      '/shots/detail.webp',
+      '/shots/search.webp',
+      '/shots/live.webp',
+      '/shots/player.webp',
+      '/shots/player-seek.webp',
+    ];
+    shots.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      if (img.decode) {
+        img.decode().catch(() => {});
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
@@ -37,7 +55,11 @@ export default function App() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
+      autoRaf: false,
+      syncTouch: false,
     });
+
+    window.__lenis = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -49,6 +71,7 @@ export default function App() {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      delete window.__lenis;
       gsap.ticker.remove(tickHandler);
       lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -64,7 +87,6 @@ export default function App() {
         <Player t={t} lang={lang} />
         <Bento t={t} lang={lang} />
         <Downloads t={t} />
-        <Faq t={t} />
       </main>
       <Footer t={t} lang={lang} setLang={setLang} />
     </div>

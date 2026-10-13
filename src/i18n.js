@@ -6,7 +6,6 @@ export const translations = {
       features: "Features",
       player: "Player",
       download: "Download",
-      faq: "FAQ",
       downloadBtn: "Download",
       langToggle: "العربية",
     },
@@ -137,28 +136,6 @@ export const translations = {
         installTip: "Run the setup file and log in with your subscription details to start watching.",
       },
     },
-    faq: {
-      eyebrow: "Support",
-      heading: "Frequently Asked Questions",
-      items: [
-        {
-          q: "Do I need a GhaithTV subscription to use the app?",
-          a: "Yes. GhaithTV is the player client for your subscription. Log in with your username and password to access your channels, movies, and series.",
-        },
-        {
-          q: "How is my password stored?",
-          a: "Your password is encrypted inside your operating system's secure vault: Android Keystore on mobile and Windows Credential Manager on PC. It is never stored in readable text files.",
-        },
-        {
-          q: "Which Android file should I download?",
-          a: "Download the ARM64 APK for almost all modern Android phones. Use the ARMv7 32-bit build only if you have an older device released before 2017.",
-        },
-        {
-          q: "Does GhaithTV work on Android TV boxes?",
-          a: "Yes. You can install the APK on Android TV devices. Broadcasts and video streams play smoothly.",
-        },
-      ],
-    },
     footer: {
       copyright: "© 2026 GhaithTV. All rights reserved.",
       note: "GhaithTV is a dedicated player client for subscribers on Android and Windows.",
@@ -166,7 +143,6 @@ export const translations = {
         { label: "Features", href: "#features" },
         { label: "Player", href: "#player" },
         { label: "Download", href: "#downloads" },
-        { label: "FAQ", href: "#faq" },
       ],
     },
   },
@@ -177,7 +153,6 @@ export const translations = {
       features: "المميزات",
       player: "المشغل",
       download: "التحميل",
-      faq: "الأسئلة الشائعة",
       downloadBtn: "تحميل",
       langToggle: "English",
     },
@@ -308,28 +283,6 @@ export const translations = {
         installTip: "شغّل ملف التثبيت وسجّل الدخول ببيانات اشتراكك لتبدأ المشاهدة فوراً.",
       },
     },
-    faq: {
-      eyebrow: "المساعدة",
-      heading: "الأسئلة الشائعة",
-      items: [
-        {
-          q: "هل أحتاج إلى اشتراك في غيث تي في لاستخدام التطبيق؟",
-          a: "نعم. التطبيق مخصص لتشغيل اشتراكك. سجّل الدخول باسم المستخدم وكلمة السر لتصل إلى قنواتك وأفلامك ومسلسلاتك.",
-        },
-        {
-          q: "كيف يتم تخزين وتأمين كلمة المرور؟",
-          a: "بياناتك لا تغادر جهازك أبداً؛ حيث تُحفظ مشفرة في Android Keystore على أندرويد و Windows Credential Manager على ويندوز.",
-        },
-        {
-          q: "أي ملف أندرويد ينبغي أن أقوم بتحميله؟",
-          a: "حمّل نسخة ARM64 لمعظم الهواتف الحديثة. نسخة ARMv7 مخصصة فقط للأجهزة القديمة المصنعة قبل 2017.",
-        },
-        {
-          q: "هل يعمل التطبيق على أجهزة Android TV Box؟",
-          a: "نعم. يمكنك تثبيت ملف APK على أجهزة TV Box وستعمل القنوات والبث المباشر بسلاسة تامة.",
-        },
-      ],
-    },
     footer: {
       copyright: "© 2026 غيث تي في. جميع الحقوق محفوظة.",
       note: "غيث تي في هو مشغل وسائط مخصص لمشتركي الخدمة على أندرويد وويندوز.",
@@ -337,7 +290,6 @@ export const translations = {
         { label: "المميزات", href: "#features" },
         { label: "المشغل", href: "#player" },
         { label: "التحميل", href: "#downloads" },
-        { label: "الأسئلة الشائعة", href: "#faq" },
       ],
     },
   },

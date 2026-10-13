@@ -4,7 +4,10 @@ export default function Footer({ t, lang, setLang }) {
   const scrollTo = (id) => (e) => {
     e.preventDefault();
     const target = document.getElementById(id);
-    if (target) {
+    if (!target) return;
+    if (window.__lenis) {
+      window.__lenis.scrollTo(target, { offset: -48 });
+    } else {
       target.scrollIntoView({ behavior: 'smooth' });
     }
   };

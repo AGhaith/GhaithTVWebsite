@@ -16,7 +16,10 @@ export default function Nav({ lang, setLang, t }) {
     e.preventDefault();
     setMobileMenuOpen(false);
     const target = document.getElementById(id);
-    if (target) {
+    if (!target) return;
+    if (window.__lenis) {
+      window.__lenis.scrollTo(target, { offset: -48 });
+    } else {
       target.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -39,9 +42,6 @@ export default function Nav({ lang, setLang, t }) {
           </a>
           <a href="#downloads" onClick={scrollTo('downloads')} className="nav-link">
             {t.nav.download}
-          </a>
-          <a href="#faq" onClick={scrollTo('faq')} className="nav-link">
-            {t.nav.faq}
           </a>
         </nav>
 
@@ -89,9 +89,6 @@ export default function Nav({ lang, setLang, t }) {
             </a>
             <a href="#downloads" onClick={scrollTo('downloads')} className="mobile-nav-link">
               {t.nav.download}
-            </a>
-            <a href="#faq" onClick={scrollTo('faq')} className="mobile-nav-link">
-              {t.nav.faq}
             </a>
           </nav>
         </div>

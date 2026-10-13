@@ -27,8 +27,28 @@ export default function Device({
       role="img"
       aria-label={alt}
     >
+      {/* Physical Hardware Buttons */}
+      <div className="device-buttons" aria-hidden="true">
+        <span className="device-btn device-btn-power" />
+        <span className="device-btn device-btn-volume" />
+      </div>
+
+      {/* Ground Contact Shadow */}
+      <div className="device-ground-shadow" aria-hidden="true" />
+
+      {/* Metal Chassis Rail */}
       <div className="device-chassis">
+        {/* Inner Uniform Screen Bezel & Display */}
         <div className="device-screen">
+          {/* Punch-hole Front Camera Cutout */}
+          <div className="device-camera" aria-hidden="true">
+            <span className="device-lens-glint" />
+          </div>
+
+          {/* Subtle Anti-reflective Glass Sheen */}
+          <div className="device-screen-glare" aria-hidden="true" />
+
+          {/* Screenshot Image or Custom Children */}
           {src && (
             <img
               src={src}

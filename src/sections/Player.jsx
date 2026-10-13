@@ -5,22 +5,19 @@ import Device from '../components/Device';
 
 export default function Player({ t, lang }) {
   const sectionRef = useRef(null);
-  const seekLayerRef = useRef(null);
+  const screensStackRef = useRef(null);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || !sectionRef.current || !seekLayerRef.current) return;
+    if (!sectionRef.current || !screensStackRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Crossfade player -> player-seek on scroll
-      gsap.to(seekLayerRef.current, {
-        opacity: 1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 40%',
-          end: 'center 40%',
-          scrub: true,
+      // Discrete swap: ScrollTrigger at section midpoint toggles .is-seeking
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'center 50%',
+        toggleClass: {
+          targets: screensStackRef.current,
+          className: 'is-seeking',
         },
       });
     }, sectionRef);
@@ -38,29 +35,30 @@ export default function Player({ t, lang }) {
           <p className="player-subhead">{t.player.subhead}</p>
         </div>
 
-        {/* Landscape Phone Frame with Crossfade */}
+        {/* Landscape Phone Frame with Discrete Swap */}
         <div className="player-landscape-wrap">
           <Device
             alt="GhaithTV video player"
             orientation="landscape"
             className="player-device"
           >
-            <div className="player-screens-stack">
+            <div ref={screensStackRef} className="player-screens-stack">
               <img
                 src="/shots/player.webp"
                 alt="GhaithTV player controls"
                 width={1200}
                 height={540}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
                 className="player-layer player-base-layer"
               />
               <img
-                ref={seekLayerRef}
                 src="/shots/player-seek.webp"
                 alt="GhaithTV player showing stacked seek feedback"
                 width={1200}
                 height={540}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
                 className="player-layer player-seek-layer"
               />
             </div>

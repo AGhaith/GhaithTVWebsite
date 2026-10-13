@@ -1,49 +1,64 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Device from '../components/Device';
 
 export default function StickyScene({ t, lang }) {
   const sectionRef = useRef(null);
-  const pinTargetRef = useRef(null);
-  const [activeIdx, setActiveIdx] = useState(0);
+  const slidesRef = useRef([]);
+  const imagesRef = useRef([]);
   const statements = t.sticky.statements;
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth < 768;
 
-    if (prefersReducedMotion || isMobile || !sectionRef.current || !pinTargetRef.current) {
+    if (prefersReducedMotion || isMobile || !sectionRef.current) {
       return;
     }
 
-    const ctx = gsap.context(() => {
-      const stepTriggers = gsap.utils.toArray('.sticky-scroll-step');
+    const slides = slidesRef.current.filter(Boolean);
+    const images = imagesRef.current.filter(Boolean);
+    const numSteps = statements.length;
 
-      stepTriggers.forEach((step, index) => {
-        ScrollTrigger.create({
-          trigger: step,
-          start: 'top 50%',
-          end: 'bottom 50%',
-          onEnter: () => setActiveIdx(index),
-          onEnterBack: () => setActiveIdx(index),
-        });
+    let activeIndex = 0;
+
+    const setStep = (index) => {
+      if (index === activeIndex) return;
+      activeIndex = index;
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('is-active');
+          slide.setAttribute('aria-hidden', 'false');
+        } else {
+          slide.classList.remove('is-active');
+          slide.setAttribute('aria-hidden', 'true');
+        }
       });
+      images.forEach((img, i) => {
+        if (i === index) {
+          img.classList.add('is-visible');
+        } else {
+          img.classList.remove('is-visible');
+        }
+      });
+    };
 
-      // Pin the central display stage while user scrolls through the steps
+    const ctx = gsap.context(() => {
+      // Single ScrollTrigger driving statement switches without React re-renders
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        pin: pinTargetRef.current,
-        pinSpacing: false,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const step = Math.min(numSteps - 1, Math.floor(self.progress * numSteps));
+          setStep(step);
+        },
       });
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [lang]);
+  }, [lang, statements.length]);
 
   return (
     <section
@@ -52,15 +67,16 @@ export default function StickyScene({ t, lang }) {
       className="sticky-scene-section"
       aria-label="Features Showcase"
     >
-      {/* Desktop Pinned Stage */}
-      <div ref={pinTargetRef} className="sticky-pinned-stage">
+      {/* Desktop Pinned Stage (CSS sticky on compositor thread) */}
+      <div className="sticky-pinned-stage">
         <div className="sticky-stage-content">
           <div className="sticky-copy-area">
             {statements.map((stmt, idx) => (
               <div
                 key={stmt.id}
-                className={`sticky-statement-slide ${activeIdx === idx ? 'is-active' : ''}`}
-                aria-hidden={activeIdx !== idx}
+                ref={(el) => (slidesRef.current[idx] = el)}
+                className={`sticky-statement-slide ${idx === 0 ? 'is-active' : ''}`}
+                aria-hidden={idx !== 0}
               >
                 <h2 className="sticky-statement-title">{stmt.title}</h2>
                 <p className="sticky-statement-desc">{stmt.desc}</p>
@@ -71,32 +87,27 @@ export default function StickyScene({ t, lang }) {
           {/* Central Pinned Phone with Crossfading Screenshots */}
           <div className="sticky-device-wrap">
             <Device
-              alt={statements[activeIdx]?.title || 'GhaithTV preview'}
+              alt="GhaithTV preview"
               orientation="portrait"
             >
               <div className="device-crossfade-stack">
                 {statements.map((stmt, idx) => (
                   <img
                     key={stmt.id}
+                    ref={(el) => (imagesRef.current[idx] = el)}
                     src={stmt.shot}
                     alt={stmt.alt}
                     width={540}
                     height={1200}
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    className={`crossfade-layer ${activeIdx === idx ? 'is-visible' : ''}`}
+                    loading="eager"
+                    decoding="async"
+                    className={`crossfade-layer ${idx === 0 ? 'is-visible' : ''}`}
                   />
                 ))}
               </div>
             </Device>
           </div>
         </div>
-      </div>
-
-      {/* Desktop Scroll Steps (Invisible triggers driving the pinned progress) */}
-      <div className="sticky-scroll-track" aria-hidden="true">
-        {statements.map((stmt) => (
-          <div key={`trigger-${stmt.id}`} className="sticky-scroll-step" />
-        ))}
       </div>
 
       {/* Mobile Stacked Fallback (no pin, natural stacked cards) */}
@@ -110,6 +121,7 @@ export default function StickyScene({ t, lang }) {
                 src={stmt.shot}
                 alt={stmt.alt}
                 orientation="portrait"
+                priority={true}
               />
             </div>
           </div>
